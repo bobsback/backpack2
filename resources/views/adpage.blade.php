@@ -4,8 +4,11 @@
 
 @section('sidebar')
 
-Submit Advert
-New Advert
+<li>Your Ads
+</li>
+<li>  Ad One</li>
+<li>Creats Ads
+</li>
 @stop
 
 @section('content')
@@ -21,7 +24,7 @@ New Advert
       </div>
     @endif
     <div class="row">
- 
+
     <ul>
  @foreach($entries as $entry)
  <div class="col-md-2">
@@ -35,16 +38,19 @@ New Advert
             @endforeach
     </ul>
  </div>
- <h2>Your Thing</h2>
-
+ <h2>Create your Ad</h2>
+ <!-- 3 column org -->
+<div class="row">
+ <div class="col-md-2">
  <form action="add" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <label class="btn btn-default btn-file btn-info"> Upload your Ad Image
         <input type="file" style="display: none;" name="filefield" id="imgInp">
         </label>
-        <h4>Preview</h4>
 <img id="blah" src="#" alt="your image" width="200px">
-
+</form>
+</div>
+</div>
 <!-- Text input-->
 <div class="row form-group">
   <label class="col-md-4 control-label" for="url">Advert Link</label>  
@@ -218,4 +224,8 @@ $checkboxes.change(function () {
 $("#imgInp").change(function(){
     readURL(this);
 });</script>
+
+
+
+
    @stop

@@ -26,19 +26,15 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-
 </head>
-
 <body>
-
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="/home">
-                        LOGO
+                <li class="">
+                    <a href="{{ url('/home') }}">
+                        <img src="{{ url('/images/logo.png') }}" height="100" class="" alt="My Perfect Ad">
                     </a>
                 </li>
                  @yield('sidebar')
@@ -48,30 +44,24 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid"><div class ="headernav">
+            <div class ="headernav">
                 @if (Auth::guest())
-            <a href="{{ url('/login') }}">{{ trans('backpack::base.login') }}</a>
+            <a class="floatright padding5" href="{{ url('/login') }}">{{ trans('backpack::base.login') }}</a>
         
-            <a href="{{ url('/register') }}">{{ trans('backpack::base.register') }}</a>
+            <a class="floatright padding5" href="{{ url('/register') }}">{{ trans('backpack::base.register') }}</a>
             
         @else
-            {{ auth()->user()->email }}<a href="{{ url('admin/logout') }}"><i class="fa fa-btn fa-sign-out"></i> {{ trans('backpack::base.logout') }}</a>
+           
+           <div class="floatright padding5"><a href="{{ url('admin/logout') }}"><i class="fa fa-btn fa-sign-out"></i> {{ trans('backpack::base.logout') }}</a></div>
+           <div class="floatright padding5"> {{ auth()->user()->email }}</div>
             @hasrole('admin')
 <a href="/admin">admin panel</a>
 @else
 @endhasrole
-        @endif                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        @endif                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-th"></span></a>
 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>   
-
-        
-
-                        
-                    </div>
-                </div>
-            </div>
+             
+            
 
 @yield('content')
 

@@ -47,6 +47,7 @@
             
            <!-- Ad Query form -->
            <form> 
+           <!-- gender -->
     <div class="funkyradio">
         <div class="funkyradio-primary">
             <input type="radio" name="radiob" id="radiob1" value="Male" />
@@ -55,10 +56,16 @@
         <div class="funkyradio-primary">
             <input type="radio" name="radiob" id="radiob2" value="Female" />
             <label class="padding10" for="radiob2">Female</label>
-        </div>
-      
-    </div>    
+        </div>   
+    </div>
+<!-- Age -->
+How old are you?<br>
+<!-- Location -->
+Where are you?<br>
+What do you like doing?<br>
+Shopping
 
+Choose some interests?
 
 
 </form>           

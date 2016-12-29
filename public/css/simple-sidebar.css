@@ -7,6 +7,14 @@
  body {
     overflow-x: hidden;
  }
+ a{
+    color:white;
+ }
+ a:hover{
+    text-decoration: none;
+    color:white;
+ }
+
 
 /* Toggle Styles */
 
