@@ -18,4 +18,9 @@ class Fileentry extends Model
      protected $fillable = ['filename','mime','original_filename','user','approved','gender','location','business_type','URL','clicks'];
 
      protected $guarded = ['id'];     
+
+       public function AgeRange() {
+
+        return $this->hasMany('AgeRange');
+    }
 }

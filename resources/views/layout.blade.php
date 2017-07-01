@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-        <link href="css/form.css" rel="stylesheet">
+        
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,6 +26,14 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <script src="https://cdn.rawgit.com/IshanDemon/List_Country_State/ed4386b4/countries.js"></script>
+
+    <script src="https://rawgit.com/seiyria/bootstrap-slider/master/dist/bootstrap-slider.min.js"></script>
+    <link href="css/slider.css" rel="stylesheet">
+   
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css" /><link href="css/form.css" rel="stylesheet">
 </head>
 <body>
     <div id="wrapper">
@@ -44,21 +52,50 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class ="headernav">
-                @if (Auth::guest())
+                      <div class="headernav">   
+        <a href="#menu-toggle" class="btn btn-default floatleft" id="menu-toggle"><span class="glyphicon glyphicon-th"></span></a> 
+@if (Request::path() == 'home')
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<div class="btn-group floatleft" data-toggle="buttons">
+  <label class="btn padding5 active new">
+    <input type="radio" name="options" id="random" autocomplete="off" value="random" checked> Random
+  </label>
+  <label class="btn padding5 new">
+    <input type="radio" name="options" id="best" autocomplete="off" value="clicks"> Best
+  </label>
+  <label class="btn padding5 new">
+    <input type="radio" name="options" id="new" autocomplete="off" value="created_at"> New
+</label>
+</div>
+<div class="quote">
+                    "{{$quote}}" - {{$peep}}
+                </div>
+                @else
+                <div class="quote">
+                    Hello
+                    @if (Auth::user())
+{{ auth()->user()->name }}
+@else
+Mr or Mrs Anon
+                    @endif
+                </div>
+@endif 
+            <a class="floatright padding5" href="{{ url('/about') }}">?</a>
+@if (Auth::guest())
             <a class="floatright padding5" href="{{ url('/login') }}">{{ trans('backpack::base.login') }}</a>
         
-            <a class="floatright padding5" href="{{ url('/register') }}">{{ trans('backpack::base.register') }}</a>
+            <a class="floatright padding5" href="{{ url('/register') }}">Submit Ad</a>
             
         @else
-           
-           <div class="floatright padding5"><a href="{{ url('admin/logout') }}"><i class="fa fa-btn fa-sign-out"></i> {{ trans('backpack::base.logout') }}</a></div>
-           <div class="floatright padding5"> {{ auth()->user()->email }}</div>
+            
+            <a href="{{ url('admin/logout') }}" class="floatright padding5"><i class="fa fa-btn fa-sign-out"></i> Logout</a>
+            <a class="floatright padding5" href="{{ url('user') }}" > Create Add</a>
             @hasrole('admin')
-<a href="/admin">admin panel</a>
+<a class="floatright padding5" href="/admin">admin panel</a>
 @else
 @endhasrole
-        @endif                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-th"></span></a>
+        @endif                        
+
 </div>
              
             

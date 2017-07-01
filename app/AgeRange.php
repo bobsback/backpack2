@@ -13,4 +13,9 @@ class AgeRange extends Model
      protected $fillable = ['fileid','age'];
 
      protected $guarded = ['id'];    
+
+       public function Fileentry() {
+
+        return $this->belongsTo('App\Fileentry');
+    }
 }

@@ -26,7 +26,7 @@ class CreateFileentriesTableb extends Migration
             $table->string('business_type');
             $table->string('URL');
             $table->integer('clicks')->default(0);
-        
+            
             $table->timestamps();
         });
     }

@@ -14,8 +14,39 @@
     text-decoration: none;
     color:white;
  }
+.ad{
+  width:200px;
+  height:200px;
+  float: left;
+  overflow: hidden;
+}
 
 
+/*GROW*/
+.grow img {
+  height: 200px;
+  width: 200px;
+ 
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+.grow img:hover {
+  width: 220px;
+  height: 220px;
+}
+.quote {   display: inline-block;
+    padding-top: 5px;
+    color: grey;
+font-weight: 400;
+        
+}
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
 /* Toggle Styles */
 
 #wrapper {
@@ -137,7 +168,10 @@
 }
 .headernav{
     padding: 10px;
-    background-color: #000
+    background-color: #000;
+      text-align: center;
+      padding-bottom: 22px;
+
 }
 .floatright{
     float: right;
@@ -165,8 +199,131 @@
 }
 body{
     color:white;
-    background-color: #242424;
+    background-color: black;
 }
 .container-fluid{
-    background-color: #242424;
+    background-color: black;
+}
+
+/* Tooltip container */
+.tooltip1 {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip1 .tooltiptext1 {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip1 .tooltiptext1::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip1:hover .tooltiptext1 {
+    visibility: visible;
+    opacity: 1;
+}
+.buttontxt{
+        padding: 4px 4px;
+        margin: 2px;
+    margin-bottom: 0;
+    font-size: 13px;
+   border: purple;
+    border-style: solid;
+    border-width: 2px;
+    font-weight: 300;
+}
+.buttontxt:hover{
+        text-decoration: none;
+    color: #fff;
+    background: purple;
+}
+.selectize-input{
+        border: purple;
+    border-style: solid;
+    border-width: 3px;
+}
+.radio {
+    visibility:hidden;
+    display:none;
+}
+label {
+    cursor: pointer;
+}
+input:checked + label {
+    background-color: purple;
+}
+.purp{
+    background-color: purple;
+    border-color: purple;
+}
+.purp:hover{
+    background-color: black;
+    border-color: purple;
+}
+.slider-handle {
+   
+    background-color: purple;
+    /* background-image: -webkit-linear-gradient(top,#149bdf 0,#0480be 100%); */
+    background-image:-webkit-linear-gradient(top,purple 0,purple 100%); ;
+    /* background-image: linear-gradient(to bottom,#149bdf 0,#0480be 100%); */
+}
+.form-control {
+    color: white;
+    background-color: black;
+    border: 2px solid purple;
+
+}
+.form-control:focus {
+    border-color: white;
+}
+.selectize-control.single .selectize-input.input-active, .selectize-input {
+    background: black;
+  color: white;
+}
+.glyphicon {
+    color: purple;}
+.btn-default {
+    color: #333;
+    background-color: black;
+    border-color: white;}
+.btn-default:hover {
+    color: purple;
+        background-color: white;
+    border-color: purple;
+    
+}
+}
+.btn-default.focus, .btn-default:focus {
+    color: purple;
+       background-color: black;
+    border-color: purple;
 }

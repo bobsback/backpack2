@@ -3,7 +3,12 @@
     margin-left: 0px; 
 }
 
-
+.selectize-control.multi .selectize-input>div {
+    border-radius: 5px;
+    background: purple;
+font-weight: bold;
+color: white;
+  }
 .funkyradio div {
   clear: both;
   overflow: hidden;
@@ -16,7 +21,7 @@
 .funkyradio label {
   width: 100%;
   border-radius: 3px;
-  border: 1px solid #D1D3D4;
+  border: 1px solid purple;
   font-weight: normal;
 }
 
@@ -30,8 +35,9 @@
   position: relative;
   line-height: 2.5em;
   text-indent: 3.25em;
-  margin-top: 2em;
+  margin-top: 1em;
   cursor: pointer;
+  font-weight: bold;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -47,7 +53,7 @@
   left: 0;
   content: '';
   width: 2.5em;
-  background: #D1D3D4;
+  background: purple;
   border-radius: 3px 0 0 3px;
 }
 
@@ -65,7 +71,9 @@
 
 .funkyradio input[type="radio"]:checked ~ label,
 .funkyradio input[type="checkbox"]:checked ~ label {
-  color: #777;
+  font-weight: bold;
+  color: white;
+      border: 1px solid green;
 }
 
 .funkyradio input[type="radio"]:checked ~ label:before,
@@ -96,7 +104,7 @@
 .funkyradio-success input[type="radio"]:checked ~ label:before,
 .funkyradio-success input[type="checkbox"]:checked ~ label:before {
   color: #fff;
-  background-color: #5cb85c;
+  background-color: green;
 }
 
 .funkyradio-danger input[type="radio"]:checked ~ label:before,
@@ -150,6 +158,9 @@
 .btn-file {
     position: relative;
     overflow: hidden;
+    background-color: purple;
+    border-color: purple;
+    font-weight: bold;
 }
 .btn-file input[type=file] {
     position: absolute;
@@ -165,6 +176,13 @@
     background: white;
     cursor: inherit;
     display: block;
+        background-color: green;
+    border-color: green;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: green;
+    border-color: green;
 }
 .form-group input[type="checkbox"] {
     display: none;

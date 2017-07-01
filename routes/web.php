@@ -15,7 +15,7 @@ use Spatie\Permission\Models\Permission;
 use App\User;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('/roles', function () {
 
@@ -36,6 +36,8 @@ Route::get('/register', function () {
 
        return view('register');
 });
+Route::get('yourads','FileEntryController@edit' );
+
 Route::get('user', 'FileEntryController@index');
 
 Route::get('fileentry/get/{filename}', [
@@ -48,4 +50,9 @@ Route::post('image-upload','ImageController@imageUploadPost');
 
 Route::get('/Order','home@Order');
 Route::get('/Sort','AjaxController@index');
-Route::post('/Click','AjaxController@Click');
+Route::get('/Click','AjaxController@Click');
+Route::get('/about', function () {
+
+       return view('about');
+});
+Route::patch('/yourads','FileEntryController@update');

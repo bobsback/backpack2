@@ -23,7 +23,7 @@ $sortByRan='random';
 };
 
 $minage=1;
-$maxage=22;
+$maxage=99;
 
 $agearray=[$minage,$maxage];
 
@@ -32,11 +32,10 @@ $ageid = DB::table('agerange')
 ->pluck('fileid');
 
 $business_type='entertainment';
-$location='United States';
+$location='Bahrain';
 $gender='male';
 
-
-$interests=['wierd','sporty'];
+$interests=['wierd','gamer'];
 $interestid = DB::table('interests')
 ->whereIn('interest', $interests)
 ->pluck('fileid');
@@ -65,56 +64,25 @@ $interestid = DB::table('interests')
 	$response = view('adtable', compact ('entries'))->render();
 
             return $response;
-		
-
-	
 	}
-	public function addclick()  {
-
-  // assume you have a clicks  field in your DB
-
-  $this->clicks = $this->clicks + 1;
-  $this->save();
-
-}
 
 public function Click(Request $request){
+
 $URL=$request->URL;
-$file = Fileentry::find($URL)->first();
-$file->addclick();
 
+$file = DB::table('fileentries')
+->where('URL', $URL)->value('clicks');
+
+$new = $file + 1;
+
+DB::table('fileentries')
+            ->where('URL', $URL)
+            ->update(['clicks' => $new]);
+
+ return \Response::json(array(
+                    'success' => true
+                )); 
 
 }
 
 }
-
-
-
-
-/*if ($request->exists('created_at')){
-
-				$entries->OrderBy('created_at');    
-			}
-
-			if ($request->exists('best')){
-
-				
-				$entries->OrderBy('clicks');
-       
-			}
-			if ($request->exists('random')){
-
-				
-				$entries->inRandomOrder();
-       
-			}
-			if ($request->has('gender')){
-
-				$entries->where('gender',$request->gender);
-       
-			}
-			if ($request->has('age')){
-
-				$entries->where('age',$request->age);
-       
-			}*/

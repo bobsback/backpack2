@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\User;
+use DB;
 
 class FileEntryController extends Controller
 {
@@ -22,16 +23,39 @@ class FileEntryController extends Controller
 
 
 		$entries = Fileentry::all();
+		
+		$interests = DB::table('interests')
+		->select('interest')
+		->distinct()
+		->inRandomOrder()
+                ->get();
+                $count = Fileentry::count();
  
-		return view('adpage', compact('entries'));
+		return view('adpage', compact('entries','interests','count'));
 	}
- 
+	    public function edit(Request $request)
+	{
+$userid = Auth::id();
+			$entries = DB::table ('Fileentries')->where('user',$userid)
+			->get();
+$fileid=DB::table ('Fileentries')->where('user',$userid)->pluck('id');
+$agerange = DB::table ('agerange')
+			->get();
+		return view('yourads', compact('entries','agerange'));
+	}
+    public function update(Request $request)
+	{
+		$board->fill($request->input())->save();
+
+		return back();
+	}
 	public function add(ImageUploadRequest $request) {
 $userid = Auth::id();
 $gender = $request->gender;
 $businesstype = $request->businesstype;
 $location = $request->location;
 $url = $request->url;
+$region = $request->region;
 
 		$file = $request->filefield;
 		$extension = $file->getClientOriginalExtension();
@@ -45,6 +69,7 @@ $entry->gender = $gender;
 $entry->business_type = $businesstype;
 $entry->location = $location;
 $entry->URL = $url;
+$entry->region = $region;
 		$entry->save();
 
  $ageentry = new AgeRange();
@@ -69,8 +94,8 @@ $ageentry = new AgeRange();
 $ageentry->save();
 
 $intereststring = $request->get('interests');
-
-foreach ($intereststring as $interest){
+$interestsarray = explode(',', $intereststring);
+foreach ($interestsarray as $interest){
 
 $interests = new Interests();
 $interests->fileid = $entry->id;
