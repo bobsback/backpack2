@@ -22,6 +22,7 @@ $sortByNew = null;
 $sortByRan='random';
 };
 
+
 $minage=1;
 $maxage=99;
 
@@ -31,11 +32,11 @@ $ageid = DB::table('agerange')
 ->whereBetween('age', $agearray)
 ->pluck('fileid');
 
-$business_type='entertainment';
-$location='Bahrain';
+$business_type='shopping';
+$location=null;
 $gender='male';
 
-$interests=['wierd','gamer'];
+$interests=['tech','gamer'];
 $interestid = DB::table('interests')
 ->whereIn('interest', $interests)
 ->pluck('fileid');
@@ -48,6 +49,9 @@ $interestid = DB::table('interests')
 		->when($sortByRan, function ($query) use ($sortByRan) {
                     return $query->inRandomOrder();
                 })
+        /*->when($sortByClicks, function ($query) use ($sortByRan) {
+                    return $query->orderBy($sortByClicks,'desc');
+                })*/
 		->when($business_type, function ($query) use ($business_type) {
                     return $query->where('business_type', $business_type);
                 })

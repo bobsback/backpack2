@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class Interests extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-          DB::table('interests')->insert([
+        //
+        DB::table('interests')->insert([
             'fileid' => 1,
             'userid' => 1,
             'interest' => 'Tech',

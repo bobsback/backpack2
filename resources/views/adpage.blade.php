@@ -258,8 +258,8 @@ var selectize_tags = $("#input-tags")[0].selectize
     selectize_tags.refreshItems()
      });
 </script>
-
 @endforeach
+
 
 </div> 
  <div class="col-md-4">

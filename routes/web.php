@@ -15,8 +15,9 @@ use Spatie\Permission\Models\Permission;
 use App\User;
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('home');
 });
+
 Route::get('/roles', function () {
 
    
@@ -28,6 +29,7 @@ return User::with('roles')->first();
 
 });
 Route::get('home','home@index' );
+
 Route::get('/login', function () {
 
        return view('login');
@@ -56,3 +58,11 @@ Route::get('/about', function () {
        return view('about');
 });
 Route::patch('/yourads','FileEntryController@update');
+
+Route::group(['middleware' => 'web', 'prefix' => config('backpack.base.route_prefix'), 'namespace' => 'Backpack\Base\app\Http\Controllers'],
+ function () {
+    Route::auth();
+    Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('dashboard', 'AdminController@dashboard');
+    Route::get('/', 'AdminController@redirect');
+});
